@@ -22,7 +22,9 @@ public class LoginFilter implements Filter {
         HttpServletResponse hsrp=(HttpServletResponse)servletResponse;
         String requestURI = hsr.getRequestURI();
         if(requestURI.contains("login")
-                ||requestURI.contains("regist")){
+                ||requestURI.contains("regist")
+                ||requestURI.contains("static")
+                ||requestURI.contains("style")){
 //            不过滤登录页，注册页,直接放行，执行下一个过滤器
             filterChain.doFilter(servletRequest,servletResponse);
         }else{
