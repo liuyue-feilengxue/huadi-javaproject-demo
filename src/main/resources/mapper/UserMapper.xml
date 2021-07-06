@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+<!--id对应接口的函数名，parameterType对应函数传参类型。最后对应函数返回值类型-->
+<!--    会使用#{}替换相应内容-->
+    <select id="findByUserName" parameterType="string" resultType="User">
+        SELECT *
+        from `user`
+        where username=#{username}
+    </select>
+
+    <insert id="createUser" parameterType="User">
+        INSERT INTO `user` (username,password,nick_name,age,email,phone,create_time)
+        value (#{username},#{password},#{nickName},#{age},#{email},#{phone},#{createTime})
+    </insert>
+
+    <select id="findByNameAndPas" parameterType="User" resultType="User">
+        select *
+        from `user`
+        where username=#{username} and password=#{password}
+    </select>
+</mapper>
